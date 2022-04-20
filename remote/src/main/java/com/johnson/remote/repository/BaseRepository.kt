@@ -1,6 +1,7 @@
 package com.johnson.remote.repository
 
-import com.johnson.commons.utils.NetworkResource
+
+import com.johnson.domain.utils.NetworkResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

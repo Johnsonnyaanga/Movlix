@@ -3,10 +3,9 @@ package com.johnson.movlix
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.johnson.commons.utils.NetworkResource
-import org.koin.android.ext.android.get
+import com.johnson.domain.utils.NetworkResource
 import org.koin.android.ext.android.inject
-import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     val viewModel:MainViewModel by inject<MainViewModel>()

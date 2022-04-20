@@ -1,8 +1,8 @@
-package com.johnson.remote.usecases
+package com.johnson.domain.usecases
 
-import com.johnson.commons.models.Trending.TrendingResponse
-import com.johnson.commons.utils.NetworkResource
-import com.johnson.remote.repository.MoviesRepository
+import com.johnson.domain.models.TrendingResponse
+import com.johnson.domain.repository.MoviesRepository
+import com.johnson.domain.utils.NetworkResource
 import retrofit2.Response
 
 class MoviesUseCase(private val repository: MoviesRepository) {

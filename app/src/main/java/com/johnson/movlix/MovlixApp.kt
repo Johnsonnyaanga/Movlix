@@ -5,6 +5,7 @@ import com.johnson.movlix.di.mainViewModel
 import com.johnson.remote.di.UseCaseModule
 import com.johnson.remote.di.networkModule
 import com.johnson.remote.di.repositoryModule
+
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

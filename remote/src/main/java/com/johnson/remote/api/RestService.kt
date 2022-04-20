@@ -7,8 +7,8 @@ import com.johnson.commons.models.Genre.GenreResponse
 import com.johnson.commons.models.Movie.Movie
 import com.johnson.commons.models.People.People
 import com.johnson.commons.models.PopularMovies.PopularMovieResponse
-import com.johnson.commons.models.Trending.TrendingResponse
 import com.johnson.commons.models.UpcomingMovies.UpcomingMovieResponse
+import com.johnson.domain.models.TrendingResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
