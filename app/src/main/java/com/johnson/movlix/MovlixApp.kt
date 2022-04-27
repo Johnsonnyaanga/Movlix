@@ -1,6 +1,7 @@
 package com.johnson.movlix
 
 import android.app.Application
+import com.johnson.cache.di.CacheModule
 import com.johnson.movlix.di.mainViewModel
 import com.johnson.remote.di.UseCaseModule
 import com.johnson.remote.di.networkModule

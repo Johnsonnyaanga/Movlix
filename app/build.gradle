@@ -7,6 +7,9 @@ android {
     compileSdk 32
 
     defaultConfig {
+        configurations.all {
+            resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
+        }
         applicationId "com.johnson.movlix"
         minSdk 21
         targetSdk 32
@@ -14,6 +17,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures{
+        viewBinding true
     }
 
     buildTypes {
@@ -41,12 +47,19 @@ dependencies {
     implementation project(path: ':commons')
     implementation project(path: ':domain')
     implementation project(path: ':cache')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     //dependancy injection koin
     def koin_version= "3.2.0-beta-1"
     implementation "io.insert-koin:koin-android:$koin_version"
+    //testImplementation "org.koin:koin-test:$koin_version"
     implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
 
     testImplementation 'junit:junit:4.+'

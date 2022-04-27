@@ -26,7 +26,7 @@ class MainViewModel(val moviesUseCase: MoviesUseCase): ViewModel() {
    fun getTrendingMovies()=viewModelScope.launch {
        val moviesResponse = moviesUseCase.invoke(
            Constants.MEDIA_TYPE_ALL,
-           Constants.TIME_WINDOW_DAY,
+           Constants.TIME_WINDOW_WEEK,
            Constants.API_KEY,
            Constants.LANG_US
        )
