@@ -2,12 +2,7 @@ package com.johnson.remote.api
 
 
 
-import com.johnson.commons.models.Actors.Actors
-import com.johnson.commons.models.Genre.GenreResponse
-import com.johnson.commons.models.Movie.Movie
-import com.johnson.commons.models.People.People
-import com.johnson.commons.models.PopularMovies.PopularMovieResponse
-import com.johnson.commons.models.UpcomingMovies.UpcomingMovieResponse
+import com.johnson.domain.models.Actors.Actors
 import com.johnson.domain.models.TrendingResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -25,39 +20,39 @@ interface RestService {
         @Query("language") language: String?
         ): Response<TrendingResponse>
 
-    @GET("person/popular")
-    suspend fun fetchPopularPeople(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String?,
-        @Query("page") page: Int = 1,
-    ): Response<People>
+//    @GET("person/popular")
+//    suspend fun fetchPopularPeople(
+//        @Query("api_key") apiKey: String,
+//        @Query("language") language: String?,
+//        @Query("page") page: Int = 1,
+//    ): Response<People>
+//
+//    @GET("genre/movie/list")
+//    suspend fun fetchMovieGenres(
+//        @Query("api_key") apiKey: String,
+//        @Query("language") language: String?
+//    ): Response<GenreResponse>
+//
+//    @GET("movie/popular")
+//    suspend fun fetchPopularMovies(
+//        @Query("api_key") apiKey: String,
+//        @Query("language") language: String?,
+//        @Query("page") page: Int = 1
+//    ): Response<PopularMovieResponse>
+//
+//    @GET("movie/upcoming")
+//    suspend fun fetchUpcomingMovies(
+//        @Query("api_key") apiKey: String,
+//        @Query("language") language: String?,
+//        @Query("page") page: Int = 1
+//    ): Response<UpcomingMovieResponse>
 
-    @GET("genre/movie/list")
-    suspend fun fetchMovieGenres(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String?
-    ): Response<GenreResponse>
-
-    @GET("movie/popular")
-    suspend fun fetchPopularMovies(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String?,
-        @Query("page") page: Int = 1
-    ): Response<PopularMovieResponse>
-
-    @GET("movie/upcoming")
-    suspend fun fetchUpcomingMovies(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String?,
-        @Query("page") page: Int = 1
-    ): Response<UpcomingMovieResponse>
-
-    @GET("movie/{movie_id}")
-    suspend fun fetchMovieDetails(
-        @Path("movie_id") movieId: Int,
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String?
-    ): Response<Movie>
+//    @GET("movie/{movie_id}")
+//    suspend fun fetchMovieDetails(
+//        @Path("movie_id") movieId: Int,
+//        @Query("api_key") apiKey: String,
+//        @Query("language") language: String?
+//    ): Response<Movie>
 
     @GET("movie/{movie_id}/credits")
     suspend fun fetchMovieActors(

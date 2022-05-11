@@ -1,5 +1,6 @@
 package com.johnson.remote.repository
 
+import com.johnson.domain.models.Actors.Actors
 import com.johnson.domain.models.TrendingResponse
 import com.johnson.domain.repository.MoviesRepository
 import com.johnson.domain.utils.NetworkResource
@@ -20,4 +21,16 @@ class MoviesRepositoryImpl(private val restService: RestService):BaseRepository(
             restService.fetchTrendingMovies(mediaType,timeWindow,apiKey,language )
         }
     }
+
+    override suspend fun fetchMovieActors(
+        movieId: Int,
+        apiKey: String,
+        language: String?
+    ):NetworkResource<Response<Actors>> {
+        return safeApiCall {
+            restService.fetchMovieActors(movieId,apiKey,language )
+        }
+    }
+
+
 }

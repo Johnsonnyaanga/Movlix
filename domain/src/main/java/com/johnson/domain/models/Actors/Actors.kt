@@ -1,4 +1,4 @@
-package com.johnson.commons.models.Actors
+package com.johnson.domain.models.Actors
 
 data class Actors(
     val cast: List<Cast>,

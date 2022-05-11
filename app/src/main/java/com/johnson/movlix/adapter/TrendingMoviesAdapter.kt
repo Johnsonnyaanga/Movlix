@@ -2,6 +2,7 @@ package com.johnson.movlix.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.johnson.commons.utils.Constants.IMG_URL_INIT_PATH
 import com.johnson.domain.models.Result
 import com.johnson.movlix.databinding.MovieViewBinding
+import com.johnson.movlix.ui.fragments.HomeFragment
+import com.johnson.movlix.ui.fragments.HomeFragmentDirections
 
 class TrendingMoviesAdapter:RecyclerView.Adapter<TrendingMoviesAdapter.TrendingMoviesViewHolder>() {
     class TrendingMoviesViewHolder(val binding:MovieViewBinding):RecyclerView.ViewHolder(binding.root)
@@ -39,8 +42,12 @@ class TrendingMoviesAdapter:RecyclerView.Adapter<TrendingMoviesAdapter.TrendingM
                 .load(IMG_URL_INIT_PATH+item.poster_path)
                 .transition(DrawableTransitionOptions.withCrossFade(500))
                 .into(movieLogo)
-
             movieTitle.text = item.title
+
+            movieView.setOnClickListener{
+                val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(item)
+                holder.itemView.findNavController().navigate(action)
+            }
 
         }
 

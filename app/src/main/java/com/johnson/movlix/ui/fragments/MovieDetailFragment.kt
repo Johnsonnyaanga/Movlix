@@ -1,0 +1,72 @@
+package com.johnson.movlix.ui.fragments
+
+import android.graphics.Color
+import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.navArgs
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import com.bumptech.glide.Glide
+import com.johnson.commons.utils.Constants
+import com.johnson.movlix.R
+import com.johnson.movlix.databinding.FragmentHomeBinding
+import com.johnson.movlix.databinding.FragmentMovieDetailBinding
+
+
+class MovieDetailFragment : Fragment() {
+    val args by navArgs<MovieDetailFragmentArgs>()
+    private var _binding: FragmentMovieDetailBinding?=null
+    private val binding get() = _binding!!
+    private lateinit var circularProgressDrawable:CircularProgressDrawable
+
+
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_movie_detail, container, false)
+        _binding = FragmentMovieDetailBinding.bind(view)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = args.movie.original_title
+
+        circularProgressDrawable = CircularProgressDrawable(requireActivity())
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+
+        updateUI()
+
+
+
+
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    fun updateUI(){
+        binding.movieDetailsTitle.text = args.movie.title
+        binding.movieDetailsOverviewText.text = args.movie.overview
+        binding.movieRate.text = args.movie.vote_average.toString()
+        Glide.with(requireContext())
+            .load(Constants.IMG_URL_INIT_PATH +args.movie.poster_path)
+            .placeholder(circularProgressDrawable)
+            .into(binding.movieDetailsBackDropImage)
+        Glide.with(requireContext())
+            .load(Constants.IMG_URL_INIT_PATH +args.movie.backdrop_path)
+            .placeholder(circularProgressDrawable )
+            .into(binding.movieDetailsSmallImage)
+
+    }
+
+
+}
