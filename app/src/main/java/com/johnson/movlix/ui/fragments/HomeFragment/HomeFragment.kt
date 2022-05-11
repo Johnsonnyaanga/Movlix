@@ -1,4 +1,4 @@
-package com.johnson.movlix.ui.fragments
+package com.johnson.movlix.ui.fragments.HomeFragment
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.johnson.domain.utils.NetworkResource
 import com.johnson.movlix.InternetConnection
@@ -16,7 +15,6 @@ import com.johnson.movlix.MainViewModel
 import com.johnson.movlix.R
 import com.johnson.movlix.adapter.TrendingMoviesAdapter
 import com.johnson.movlix.databinding.FragmentHomeBinding
-import com.johnson.movlix.databinding.NoInternetViewBinding
 import org.koin.android.ext.android.inject
 
 

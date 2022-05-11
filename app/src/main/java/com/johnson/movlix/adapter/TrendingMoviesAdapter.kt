@@ -11,8 +11,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.johnson.commons.utils.Constants.IMG_URL_INIT_PATH
 import com.johnson.domain.models.Result
 import com.johnson.movlix.databinding.MovieViewBinding
-import com.johnson.movlix.ui.fragments.HomeFragment
-import com.johnson.movlix.ui.fragments.HomeFragmentDirections
+import com.johnson.movlix.ui.fragments.HomeFragment.HomeFragmentDirections
 
 class TrendingMoviesAdapter:RecyclerView.Adapter<TrendingMoviesAdapter.TrendingMoviesViewHolder>() {
     class TrendingMoviesViewHolder(val binding:MovieViewBinding):RecyclerView.ViewHolder(binding.root)
