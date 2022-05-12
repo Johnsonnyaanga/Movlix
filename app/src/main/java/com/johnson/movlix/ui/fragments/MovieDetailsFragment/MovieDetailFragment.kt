@@ -1,6 +1,6 @@
-package com.johnson.movlix.ui.fragments
+package com.johnson.movlix.ui.fragments.MovieDetailsFragment
 
-import android.graphics.Color
+import ActorsListAdapter
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,19 +8,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.johnson.commons.utils.Constants
+import com.johnson.domain.utils.NetworkResource
+import com.johnson.movlix.MainViewModel
 import com.johnson.movlix.R
-import com.johnson.movlix.databinding.FragmentHomeBinding
 import com.johnson.movlix.databinding.FragmentMovieDetailBinding
+import org.koin.android.ext.android.inject
 
 
 class MovieDetailFragment : Fragment() {
     val args by navArgs<MovieDetailFragmentArgs>()
     private var _binding: FragmentMovieDetailBinding?=null
     private val binding get() = _binding!!
+    val viewModel: MainViewModel by inject()
     private lateinit var circularProgressDrawable:CircularProgressDrawable
 
 
@@ -39,6 +43,7 @@ class MovieDetailFragment : Fragment() {
         circularProgressDrawable.strokeWidth = 5f
         circularProgressDrawable.centerRadius = 30f
         circularProgressDrawable.start()
+        viewModel.getMovieActors(args.movie.id)
 
         updateUI()
 
@@ -65,6 +70,29 @@ class MovieDetailFragment : Fragment() {
             .load(Constants.IMG_URL_INIT_PATH +args.movie.backdrop_path)
             .placeholder(circularProgressDrawable )
             .into(binding.movieDetailsSmallImage)
+
+        viewModel.movieActorsResponse.observe(viewLifecycleOwner, Observer {
+            when(it){
+                is NetworkResource.Success -> {
+                    val actorsAdapter = it.value.body()?.cast?.let { it1 -> ActorsListAdapter(it1) }
+
+
+                    binding.actorsRecyclerView.apply {
+                        adapter = actorsAdapter
+                    }
+
+
+                }
+                is NetworkResource.Failure ->{
+                    Log.d("new data", it.errorCode.toString())
+                }
+
+                is NetworkResource.Loading ->{
+                    Log.d("new data", "loading")
+                }
+            }
+
+        })
 
     }
 
