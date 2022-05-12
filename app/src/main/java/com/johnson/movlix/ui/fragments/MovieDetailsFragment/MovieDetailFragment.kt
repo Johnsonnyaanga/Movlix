@@ -72,24 +72,16 @@ class MovieDetailFragment : Fragment() {
             .into(binding.movieDetailsSmallImage)
 
         viewModel.movieActorsResponse.observe(viewLifecycleOwner, Observer {
-<<<<<<< HEAD:app/src/main/java/com/johnson/movlix/ui/fragments/MovieDetailsFragment/MovieDetailFragment.kt
+
+
+
             when(it){
                 is NetworkResource.Success -> {
                     val actorsAdapter = it.value.body()?.cast?.let { it1 -> ActorsListAdapter(it1) }
 
+                    binding.actorsRecyclerView.adapter = actorsAdapter
+                 }
 
-=======
-            val actorsAdapter = ActorsListAdapter()
-            when(it){
-                is NetworkResource.Success -> {
-                    actorsAdapter.differ.submitList(it.value.body()?.crew)
->>>>>>> f7111c087b7bb7e9fca9cf9a3219ae2f9442ff0f:app/src/main/java/com/johnson/movlix/ui/fragments/MovieDetailFragment.kt
-                    binding.actorsRecyclerView.apply {
-                        adapter = actorsAdapter
-                    }
-
-
-                }
                 is NetworkResource.Failure ->{
                     Log.d("new data", it.errorCode.toString())
                 }
