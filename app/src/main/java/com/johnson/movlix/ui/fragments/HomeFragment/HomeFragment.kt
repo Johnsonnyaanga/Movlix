@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
                 is NetworkResource.Success -> {
                     Log.d("new data", it.value.body()?.results.toString())
                     trendingMoviesAdapter.differ.submitList(it.value.body()?.results)
-                    val layoutmanager  = GridLayoutManager(requireContext(),4)
+                    val layoutmanager  = GridLayoutManager(requireContext(),3)
                     binding.recyclerview.adapter = trendingMoviesAdapter
                     binding.recyclerview.layoutManager = layoutmanager
 
